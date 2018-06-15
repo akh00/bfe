@@ -1,0 +1,25 @@
+# ignore files generated during the build
+generated
+
+# ignoring gradle files
+.gradle/
+output/
+
+# ignoring eclipse files
+.classpath
+.project
+.settings/
+bin/
+service/null/
+modules/odrs-functionaltest/test-output/
+/build/
+
+# ignoring intellij files
+*.eml
+*.iml
+*.ipr
+*.iws
+/.idea/
+/out/
+# ignoring local Docker artifacts
+/cloud/**/artifacts/

@@ -1,11 +1,11 @@
 package org.ak.bfe.action;
 
 import org.ak.bfe.item.Item;
-import org.ak.bfe.item.State;
+import org.ak.bfe.statem.StateEnum;
 
 public interface Action {
 
-	State targetState();
+	StateEnum targetState();
 
 	ActionItem bind(Item item);
 

@@ -1,0 +1,17 @@
+# LF line endings for all text files
+*.sh text eol=lf
+*.gradle text eol=lf
+*.java text eol=lf
+*.config text eol=lf
+*.properties text eol=lf
+*.xml text eol=lf
+*.xsd text eol=lf
+*.xsl text eol=lf
+
+Dockerfile text eol=lf
+
+/gradlew text eol=lf
+
+# CRLF line endings for Windows files
+*.bat text eol=crlf
+*.cmd text eol=crlf
