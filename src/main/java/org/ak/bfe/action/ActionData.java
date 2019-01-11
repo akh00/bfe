@@ -5,6 +5,7 @@ public class ActionData {
 	private Object data;
 	private String actionId;
 	private Result result;
+	private String type; //type of item to be created
 	public ActionData(String itemId, Object data, String actionId, Result result) {
 		super();
 		this.itemId = itemId;
@@ -12,8 +13,9 @@ public class ActionData {
 		this.actionId = actionId;
 		this.result = result;
 	}
-	public ActionData(Object data, String actionId, Result result) {
+	public ActionData(Object data, String actionId, String type, Result result) {
 		this(null, data, actionId, result);
+		this.type = type;
 	}
 	public String getItemId() {
 		return itemId;
@@ -29,5 +31,9 @@ public class ActionData {
 	}
 	public boolean isForNewItem() {
 		return this.itemId == null;
+	}
+	public String getType()
+	{
+		return type;
 	}
 }

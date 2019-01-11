@@ -1,30 +1,39 @@
 package org.ak.bfe.statem;
 
-import java.util.List;
 import java.util.Map;
 
 public class State {
 	private String stateId;
-	private Map<String, List<Transition>> actionStateMap;
-	
-	public State(String stateId, Map<String, List<Transition>> actionStateMap)
+	private String machineId;
+	private Event defaultEvent; //event to be sent automatically in this state 
+	private Map<String, String> eventState;
+
+	public State(String stateId, Map<String, String> actionStateMap, String machineId, Event defaultEvent)
 	{
 		super();
 		this.stateId = stateId;
-		this.actionStateMap = actionStateMap;
+		this.eventState = actionStateMap;
+		this.machineId = machineId;
+		this.defaultEvent = defaultEvent;
 	}
 
-	public String transit(String actionId, Map<String, Object> env) throws IncorrectTransitionException{
-		List<Transition> transitions = actionStateMap.get(actionId);
-		if (transitions == null)
-			throw new IncorrectTransitionException(actionId);
-		for (Transition tran : transitions) {
-			if(tran.condition(env))
-			{
-				return tran.stateId();
-			}
-		}
-		return this.stateId;
+	public State(String stateId, Map<String, String> actionStateMap, String machineId)
+	{
+		super();
+		this.stateId = stateId;
+		this.eventState = actionStateMap;
+		this.machineId = machineId;
+	}
+
+	public String transit(String eventId, Map<String, Object> env) throws IncorrectTransitionException
+	{
+		String stateId = eventState.get(eventId);
+		return stateId == null ? this.stateId : stateId;
+	}
+
+	boolean isTerminal()
+	{
+		return eventState == null || eventState.isEmpty();
 	}
 
 	@Override
@@ -57,5 +66,15 @@ public class State {
 	public String getStateId()
 	{
 		return stateId;
+	}
+
+	public String getMachineId()
+	{
+		return machineId;
+	}
+
+	public Event getDefaultEvent()
+	{
+		return defaultEvent;
 	}
 }

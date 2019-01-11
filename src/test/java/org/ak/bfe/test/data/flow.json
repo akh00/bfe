@@ -1,0 +1,44 @@
+{
+	"actions": [
+		{
+			"id": "init",
+			"state": "init",
+			"condition": true,
+			"type": "supplyItem"
+		}
+	],
+	"state_machines": [
+		{
+			"id": "init_sm",
+			"states": [
+				{
+					"id": "init",
+					"eventState": {
+						"sucess": "verify",
+						"error": "erroroninit"
+					}
+				},
+				{
+					"id": "verify",
+					"eventState": {
+						"sucess": "syncafterverify",
+						"error": "erroronverify"
+					}
+				},
+				{
+					"id": "erroroninit",
+					"eventState": null
+				},
+				{
+					"id": "verify",
+					"eventState": {
+						"sucess": "syncafterverify",
+						"error": "erroronverify"
+					}
+				}
+			]
+		}
+	],
+	"item_factories": [
+	]
+}
